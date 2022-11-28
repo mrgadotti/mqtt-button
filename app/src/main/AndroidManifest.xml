@@ -25,14 +25,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.coffee.ConfigActivity" />
-        <activity
-            android:name=".ui.coffee.QrCodeActivity"
-            android:screenOrientation="fullSensor"
-            android:stateNotNeeded="true"
-            android:theme="@style/zxing_CaptureTheme"
-            android:windowSoftInputMode="stateAlwaysHidden" />
 
-        <service android:name="org.eclipse.paho.android.service.MqttService"></service>
+
+        <service android:name="org.eclipse.paho.android.service.MqttService" />
     </application>
 
 </manifest>

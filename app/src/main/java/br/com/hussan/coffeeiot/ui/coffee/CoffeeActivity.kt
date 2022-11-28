@@ -21,12 +21,12 @@ import org.eclipse.paho.client.mqttv3.MqttMessage
 
 class CoffeeActivity : AppCompatActivity() {
 
-    lateinit var broker: String
-    lateinit var topic: String
-    val prefs: PrefsRespository by lazy {
+    private lateinit var broker: String
+    private lateinit var topic: String
+    private val prefs: PrefsRespository by lazy {
         PrefsRespository(this)
     }
-    val mqttClient: MqttClient by lazy {
+    private val mqttClient: MqttClient by lazy {
         MqttClient(this)
     }
 
@@ -34,7 +34,7 @@ class CoffeeActivity : AppCompatActivity() {
         const val CONFIG_REQUEST = 123
     }
 
-    var onOff = false
+    private var onOff = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -71,13 +71,13 @@ class CoffeeActivity : AppCompatActivity() {
         imgCoffee.show()
         onOff = if (String(message.payload) == "on") {
             btnCoffee.setColorFilter(color(R.color.colorPrimary))
-            imgCoffee.setImageDrawable(ContextCompat.getDrawable(this@CoffeeActivity, R.drawable.smile))
+            imgCoffee.setImageDrawable(ContextCompat.getDrawable(this@CoffeeActivity, R.drawable.led_on))
             lytRoot.setBackgroundColor(color(android.R.color.white))
 
             true
         } else {
             btnCoffee.setColorFilter(color(android.R.color.darker_gray))
-            imgCoffee.setImageDrawable(ContextCompat.getDrawable(this@CoffeeActivity, R.drawable.upside_down_smile))
+            imgCoffee.setImageDrawable(ContextCompat.getDrawable(this@CoffeeActivity, R.drawable.led_off))
             lytRoot.setBackgroundColor(color(android.R.color.black))
             false
         }
